@@ -1,9 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"github.com/gookit/config/v2"
+	"github.com/gookit/config/v2/yaml"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
+	config.WithOptions(config.ParseEnv)
+	config.AddDriver(yaml.Driver)
+
+	err := config.LoadFiles("./config.yaml")
+	if err != nil {
+		panic(err)
+	}
+
 }
