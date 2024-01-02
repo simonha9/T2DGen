@@ -13,7 +13,7 @@ func main() {
 		})
 	})
 
-	itinController := new(controller.ItineraryController)
+	itinController := controller.NewItineraryController()
 	itinGroup := r.Group("/itinerary")
 	{
 		itinGroup.GET("/generate", itinController.GenerateItinerary)
