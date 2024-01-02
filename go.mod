@@ -3,13 +3,12 @@ module github.com/simonha9/T2DGen
 go 1.20
 
 require (
-	github.com/JustinBeckwith/go-yelp v0.0.0-20160609053333-2228f91f3d15
+	github.com/JoshuaPortelance/yelp-fusion-go v0.0.0-20210428010901-e82373f566c9
 	github.com/gin-gonic/gin v1.9.1
 	github.com/gookit/config/v2 v2.2.4
 )
 
 require (
-	github.com/JustinBeckwith/oauth v0.0.0-20150115054624-a1577bd38702 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
@@ -23,7 +22,6 @@ require (
 	github.com/goccy/go-yaml v1.11.2 // indirect
 	github.com/gookit/color v1.5.4 // indirect
 	github.com/gookit/goutil v0.6.14 // indirect
-	github.com/guregu/null v4.0.0+incompatible // indirect
 	github.com/imdario/mergo v0.3.15 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect

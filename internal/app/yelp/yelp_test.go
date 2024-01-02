@@ -11,7 +11,7 @@ func init() {
 	config.WithOptions(config.ParseEnv)
 	config.AddDriver(yaml.Driver)
 
-	err := config.LoadFiles("../../config_test.yaml")
+	err := config.LoadFiles("../config/config_test.yaml")
 	if err != nil {
 		panic(err)
 	}

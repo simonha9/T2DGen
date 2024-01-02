@@ -1,7 +1,5 @@
-github.com/JustinBeckwith/go-yelp v0.0.0-20160609053333-2228f91f3d15 h1:SIgLdMe6nGqbkRnJo8Nj0JGSy0W2kVKlM3gMkRYLJZ4=
-github.com/JustinBeckwith/go-yelp v0.0.0-20160609053333-2228f91f3d15/go.mod h1:lImVbDjt9CXKLKP8jRTqtGctNCT6XC+x0dr3+XzzzZA=
-github.com/JustinBeckwith/oauth v0.0.0-20150115054624-a1577bd38702 h1:OvtMvJHVNY29WLT8hajE/HaT53cSBlj1Bxxza4sF8VM=
-github.com/JustinBeckwith/oauth v0.0.0-20150115054624-a1577bd38702/go.mod h1:Jxf+o4y3ffwskwlUUv8YFLM6RJ83jBVSfhqEFA0yvXM=
+github.com/JoshuaPortelance/yelp-fusion-go v0.0.0-20210428010901-e82373f566c9 h1:SWQAm+ea/8jLnyUt33XYJDgwmnxDNM+CTZn7uHGuGrg=
+github.com/JoshuaPortelance/yelp-fusion-go v0.0.0-20210428010901-e82373f566c9/go.mod h1:vjHZ7ldDWPD3QnxfsH7Ugq1tQsFvvjTuPhvDOaFBMDw=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
 github.com/bytedance/sonic v1.9.1 h1:6iJ6NqdoxCDr6mbY8h18oSO+cShGSMRGCEo7F2h0x8s=
 github.com/bytedance/sonic v1.9.1/go.mod h1:i736AoUSYt75HyZLoJW9ERYxcy6eaN6h4BZXU064P/U=
@@ -42,8 +40,6 @@ github.com/gookit/config/v2 v2.2.4/go.mod h1:k1ofSAuJnW6n1kTriFMSzFDC8ZT20tAPQ+1
 github.com/gookit/goutil v0.6.14 h1:96elyOG4BvVoDaiT7vx1vHPrVyEtFfYlPPBODR0/FGQ=
 github.com/gookit/goutil v0.6.14/go.mod h1:YyDBddefmjS+mU2PDPgCcjVzTDM5WgExiDv5ZA/b8I8=
 github.com/gookit/ini/v2 v2.2.2 h1:3B8abZJrVH1vi/7TU4STuTBxdhiAq1ORSt6NJZCahaI=
-github.com/guregu/null v4.0.0+incompatible h1:4zw0ckM7ECd6FNNddc3Fu4aty9nTlpkkzH7dPn4/4Gw=
-github.com/guregu/null v4.0.0+incompatible/go.mod h1:ePGpQaN9cw0tj45IR5E5ehMvsFlLlQZAkkOXZurJ3NM=
 github.com/imdario/mergo v0.3.15 h1:M8XP7IuFNsqUx6VPK2P9OSmsYsI/YFaGil0uD21V3dM=
 github.com/imdario/mergo v0.3.15/go.mod h1:WBLT9ZmE3lPoWsEzCh9LPo3TiwVN+ZKEjmz+hD27ysY=
 github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnrnM=
