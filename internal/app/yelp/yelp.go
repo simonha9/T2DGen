@@ -1,14 +1,12 @@
 package yelp
 
 import (
-	"fmt"
 	"context"
+	"fmt"
 	"net/http"
-	"encoding/json"
-	"net/url"
 )
 
-var (
+const (
 	API_HOST      = "https://api.yelp.com"
 	SEARCH_PATH   = "/v3/businesses/search"
 	BUSINESS_PATH = "/v3/businesses/"
@@ -22,7 +20,7 @@ func NewYelpClient(apikey string) *YelpClient {
 	return &YelpClient{apikey}
 }
 
-func (y *YelpClient) GetBusinesses(term, location string) YelpSearchResult {
+func (y *YelpClient) GetBusinesses(term, location string) *YelpSearchResult {
 	options := YelpSearchOptions{
 		Term:     term,
 		Location: location,
@@ -35,13 +33,26 @@ func (y *YelpClient) GetBusinesses(term, location string) YelpSearchResult {
 	return res
 }
 
-func (y *YelpClient) DoSearch(options YelpSearchOptions) (YelpSearchResult, error) {
+func (y *YelpClient) DoSearch(options YelpSearchOptions) (*YelpSearchResult, error) {
 	url := fmt.Sprintf("%s%s", API_HOST, SEARCH_PATH)
-	res := YelpSearchResult{}
-	err := Get(url, y.apiKey, options, &res)
+	res := &YelpSearchResult{}
+	httpres, err := y.DoRequest(context.Background(), url, "GET")
 	if err != nil {
-		return res, err
+		res, err = NewYelpSearchResult(httpres)
+		if err != nil {
+			return &YelpSearchResult{}, err
+		}
+	}
+	return res, err
+}
+
+func (y *YelpClient) DoRequest(ctx context.Context, url string, method string) (*http.Response, error) {
+	req, err := http.NewRequestWithContext(ctx, method, url, nil)
+	if err != nil {
+		return nil, err
 	}
 
-	return res, nil
+	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", y.apiKey))
+
+	return http.DefaultClient.Do(req)
 }

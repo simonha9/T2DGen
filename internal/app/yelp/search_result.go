@@ -1,5 +1,11 @@
 package yelp
 
+import (
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
+)
+
 type YelpSearchResult struct {
 	Businesses []struct {
 		Name        string  `json:"name"`
@@ -15,4 +21,17 @@ type YelpSearchResult struct {
 		} `json:"location"`
 	} `json:"businesses"`
 	Total int `json:"total"`
+}
+
+func NewYelpSearchResult(r *http.Response) (*YelpSearchResult, error) {
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	var res YelpSearchResult
+	if err := json.Unmarshal(body, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
 }
