@@ -2,8 +2,6 @@ package yelp
 
 import (
 	"encoding/json"
-	"io/ioutil"
-	"net/http"
 )
 
 type YelpSearchResult struct {
@@ -23,12 +21,7 @@ type YelpSearchResult struct {
 	Total int `json:"total"`
 }
 
-func NewYelpSearchResult(r *http.Response) (*YelpSearchResult, error) {
-	body, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		return nil, err
-	}
-
+func NewYelpSearchResult(body []byte) (*YelpSearchResult, error) {
 	var res YelpSearchResult
 	if err := json.Unmarshal(body, &res); err != nil {
 		return nil, err

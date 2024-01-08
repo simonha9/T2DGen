@@ -3,7 +3,9 @@ package yelp
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"net/http"
+	"net/url"
 )
 
 const (
@@ -34,16 +36,32 @@ func (y *YelpClient) GetBusinesses(term, location string) *YelpSearchResult {
 }
 
 func (y *YelpClient) DoSearch(options YelpSearchOptions) (*YelpSearchResult, error) {
-	url := fmt.Sprintf("%s%s", API_HOST, SEARCH_PATH)
+	url := buildURL(fmt.Sprintf("%s%s", API_HOST, SEARCH_PATH), options)
 	res := &YelpSearchResult{}
+	fmt.Println("url", url)
 	httpres, err := y.DoRequest(context.Background(), url, "GET")
+
+	defer httpres.Body.Close()
+
+	body, err := ioutil.ReadAll(httpres.Body)
+
 	if err != nil {
-		res, err = NewYelpSearchResult(httpres)
-		if err != nil {
-			return &YelpSearchResult{}, err
-		}
+		return &YelpSearchResult{}, err
+	}
+
+	res, err = NewYelpSearchResult(body)
+	fmt.Println("res", res)
+	if err != nil {
+		return &YelpSearchResult{}, err
 	}
 	return res, err
+}
+
+func buildURL(base string, options YelpSearchOptions) string {
+	encodedLocation := url.QueryEscape(options.Location)
+	encodedTerm := url.QueryEscape(options.Term)
+	url := fmt.Sprintf("%s%s?location=%s&term=%s", API_HOST, SEARCH_PATH, encodedLocation, encodedTerm)
+	return url
 }
 
 func (y *YelpClient) DoRequest(ctx context.Context, url string, method string) (*http.Response, error) {
